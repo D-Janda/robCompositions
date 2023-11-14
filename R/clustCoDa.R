@@ -236,7 +236,7 @@ clustCoDa <- function(x, k=NULL, method="Mclust",
   }
   if( method == "Mclust" ){
  #   vp <- TRUE
-    a <- Mclust(x, k)
+    a <- Mclust(x, k, initialization = list(hcPairs = hc(x, use = "VARS")))
     clust$cluster <- a$classification
     clust$center <- t(a$parameters$mean)
     clust$size <- table(a$classification)
